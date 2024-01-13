@@ -1,16 +1,9 @@
 class Solution {
     public boolean checkIfPangram(String sentence) {
-         boolean[] itsPresent = new boolean[26];
-         for (char ch : sentence.toCharArray()) {
-            if (Character.isLowerCase(ch)) {
-                itsPresent[ch - 'a'] = true;
-            }
-        }
-        for (boolean letterPresent : itsPresent) {
-            if (!letterPresent) {
-                return false;
-            }
-        }
+        char ch='a';
+        for(int i=0; i < 26; i++)
+            if(sentence.contains(String.valueOf(ch))) ch++;
+            else return false;
         return true;
     }
 }
