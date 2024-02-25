@@ -1,24 +1,24 @@
+import java.util.Arrays;
 class Solution {
-   public int[] intersect(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        List<Integer> resultList = new ArrayList<>();
-
-        for (int num : nums1) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+    public int[] intersect(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> map= new HashMap<>();
+        for(int i: nums1) {
+            map.put(i, map.getOrDefault(i,0) + 1);
         }
 
-        for (int num : nums2) {
-            if (map.containsKey(num) && map.get(num) > 0) {
-                resultList.add(num);
-                map.put(num, map.get(num) - 1);
+        List<Integer> list = new ArrayList<>();
+        for(int i: nums2) {
+            if(map.get(i) != null && map.get(i) > 0){
+                list.add(i);
+                map.put(i, map.get(i)-1);
             }
         }
-        
-        // Convert list to array
-        int[] result = new int[resultList.size()];
-        for (int i = 0; i < resultList.size(); i++) {
-            result[i] = resultList.get(i);
+
+        int[] arr = new int[list.size()];
+        for(int i=0; i<list.size(); i++){
+            arr[i] = list.get(i);
         }
-        return result;  
+
+        return arr;
     }
 }
